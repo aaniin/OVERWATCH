@@ -47,15 +47,15 @@ setup(
     keywords='HEP ALICE',
 
     packages=[
-        processRuns,
-        webApp
+        'processRuns',
+        'webApp'
     ],
 
     install_requires=[
-        flask,
-        Flask-Login,
-        Flask-ZODB,
-        Flask-Bcrypt
+        'Flask',
+        'Flask-Login',
+        'Flask-ZODB',
+        'Flask-Bcrypt'
     ],
 
     # Include additional files
