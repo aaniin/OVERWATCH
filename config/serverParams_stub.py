@@ -44,19 +44,14 @@ class serverParameters(object):
     #: Default user name. An empty string will disable it. Should only be used when behind CERN SSO!
     defaultUsername = ""
     #defaultUsername = "user"
-
-    #: basePath is just a useful value.
-    #: It defines a base directory to reference if the static, template, etc folders are
-    #: all in the same dir.
-    basePath = ""
-
+    
     #: staticFolder is the disk location of the static folder.
     #: It is a flask defined variable.
     #: To check if the static files are from the front-end webserver, use:
     #: https://stackoverflow.com/questions/16595691/static-files-with-flask-in-production
     #:
     #: (ie. add + "CHANGE" to the staticFolder location specified here).
-    staticFolder = os.path.join(sharedParameters.staticFolderName) 
+    staticFolder = os.path.join(sharedParameters.basePath,"webApp", sharedParameters.staticFolderName) 
 
     #: staticURLPath is the URL of the static folder.
     #: If you want to access "foo", it would be at $BASE_URL/staticURLPath/foo. "" is just the root.
@@ -65,10 +60,10 @@ class serverParameters(object):
 
     #: protectedFolder is the disk location of the protected folder.
     #: This folder holds the experimental data.
-    protectedFolder = os.path.join(sharedParameters.dataFolderName)
+    protectedFolder = os.path.join(sharedParameters.basePath, sharedParameters.dataFolderName)
 
     #: templateFolder is the disk location of the template folder.
-    templateFolder = os.path.join(sharedParameters.templateFolderName)
+    templateFolder = os.path.join(sharedParameters.basePath,"webApp", sharedParameters.templateFolderName)
 
     #: The path to the database.
     databaseLocation = sharedParameters.databaseLocation
@@ -77,7 +72,7 @@ class serverParameters(object):
     fileExtension = sharedParameters.fileExtension
 
     #: docsFolder is the disk location of the docs folder.
-    docsFolder = "doc"
+    docsFolder = os.path.join(sharedParameters.basePath, "doc")
 
     #: docsBuildFolder is the disk location of the docs html folder.
     docsBuildFolder = os.path.join(docsFolder, "build/html")
@@ -108,7 +103,7 @@ class serverParameters(object):
 
     #: Subsystems which have templates available (determined on startup).
     #: Since this is run from the root directory, we need to go into the "webApp" directory to find the templates!
-    availableRunPageTemplates = [name for name in os.listdir(os.path.join("webApp", templateFolder)) if "runPage" in name]
+    availableRunPageTemplates = [name for name in os.listdir(templateFolder) if "runPage" in name]
 
     #: Sites to check during the status request.
     statusRequestSites = {"CERN": "http://127.0.0.1:8850", "Yale": "https://aliceoverwatch.physics.yale.edu"}
@@ -136,4 +131,3 @@ class serverParameters(object):
                 returnValue += "{0}: {1}\n".format(member, getattr(cls, member))
 
         return returnValue
-
