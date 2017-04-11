@@ -54,10 +54,12 @@ class processingParameters(object):
     dirPrefix = sharedParameters.dataFolderName
 
     #: The name of the folder containing the modules for processRuns.
-    modulesPath  = "processRuns"
+    modulesFolderName = "processRuns"
+    modulesPath  = os.path.join(sharedParameters.basePath, modulesFolderName)
 
     #: The name of the folder inside the modules folder containing the detector files.
-    detectorsPath = "detectors"
+    detectorsFolderName = "detectors"
+    detectorsPath = os.path.join(sharedParameters.basePath, modulesFolderName, detectorsFolderName)
 
     #: List of subsystems.
     #: Each subsystem listed here will have an individual page for their respective histograms.
@@ -123,6 +125,3 @@ class processingParameters(object):
                 returnValue += "{0}: {1}\n".format(member, getattr(cls, member))
 
         return returnValue
-
-
-
