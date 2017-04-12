@@ -50,7 +50,7 @@ class sharedParameters(object):
     # Folders
     
     #: The OVERWATCH folder path
-    basePath = os.path.abspath("..")
+    basePath = os.path.abspath("/media/sebastian/linuxdata/Alice/OVERWATCH/")
     
     #: The name of the static folder on the disk.
     staticFolderName = "static"
@@ -64,7 +64,7 @@ class sharedParameters(object):
     #: The path to the database.
     if debug:
         # Use a local file
-        databaseLocation = os.path.join("file://", basePath, dataFolderName, "overwatch.fs")
+        databaseLocation = "file://" + os.path.join(basePath, dataFolderName, "overwatch.fs")
     else:
         # Use the network
         databaseLocation = "zeo://127.0.0.1:8090"

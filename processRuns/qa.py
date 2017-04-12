@@ -111,6 +111,8 @@ def checkHist(hist, qaContainer):
 #print dir(currentModule)
 # For more details on how this is possible, see: https://stackoverflow.com/a/3664396
 detectorsPath = processingParameters.detectorsPath
+detectorsFolderName = processingParameters.detectorsFolderName
+modulesFolderName = processingParameters.modulesFolderName
 logger.info("\nLoading modules for detectors:")
 
 # For saving and show the docstrings on the QA page.
@@ -135,7 +137,7 @@ for subsystem in subsystems:
     if os.path.exists(os.path.join(detectorsPath, "%s.py" % subsystem)):
         #print "file exists"
         # Import module dynamically
-        subsystemModule = importlib.import_module("%s.%s.%s" % (modulesPath, detectorsPath, subsystem))
+        subsystemModule = importlib.import_module("%s.%s.%s" % (modulesFolderName, detectorsFolderName, subsystem))
         #logger.info(dir(subsystemModule))
 
         # Loop over all functions from the dynamically loaded module
