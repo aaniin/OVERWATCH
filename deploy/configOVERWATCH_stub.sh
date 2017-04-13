@@ -7,7 +7,7 @@ forceRestart=false
 useSSHTunnel=false
 
 # Values are paired together
-subsystems=( "EMC" "TPC" "HLT" )
+subsystems=( "EMC" "TPC" "TRD" "HLT" )
 # These are the port values that we pass to the receiver
 internalReceiverPorts=( 11 12 13 )
 # These are the port values at the other host
