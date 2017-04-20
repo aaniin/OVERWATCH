@@ -50,7 +50,7 @@ class sharedParameters(object):
     # Folders
     
     #: The OVERWATCH folder path
-    basePath = os.path.abspath("/media/sebastian/linuxdata/Alice/OVERWATCH/")
+    basePath = os.path.abspath("/misc/alidata100/alice_u/syrkowski/OVERWATCH/")
     
     #: The name of the static folder on the disk.
     staticFolderName = "static"
