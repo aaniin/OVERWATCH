@@ -1,13 +1,13 @@
 How to run OVERWATCH:
 
 Installation:
-First clone the repository into your desired installation folder. I made some changes to Overwatch so that it can be run from anywhere instead of only the root directory.
+First clone the repository into your desired installation folder. I made some changes to Overwatch so that it can run anywhere instead of only the root directory.
 
 git clone https://github.com/aaniin/OVERWATCH
 
 Commit d957d5c3baea29b9cdf1d9cbb1e06b45e58d4e8c is the last version before I started implementing the TRD.
 
-OVERWATCH uses python 2.7.9 or newer, python 3 support seems to be implemented, but has not been tested. Install these dependencies using pip:
+OVERWATCH uses python 2.7.9 or newer, python 3 support seems to be implemented, but has not been tested. Install these dependencies using pip (you can use the --user parameter if you do not have root access to install it in your home directory):
 
 Flask
 Flask-Login
@@ -16,7 +16,6 @@ Flask-Bcrypt
 ZODB
 Flask-ZODB
 numpy
-flup
 flup6
 future
 requests
@@ -35,6 +34,9 @@ npm install -g bower
 cd <installation_directory>/OVERWATCH/webApp/static/
 bower install
 
+The fist two steps require root access. If you do not have this, you can use the alice-serv3 which has npm installed. For the second step you will have to configure npm to use a different directory, instructions can be found here:
+http://stackoverflow.com/questions/19352976/npm-modules-wont-install-globally-without-sudo
+
 If you get the error:
 /usr/bin/env: node: No such file or directory
 when running bower install do this:
@@ -49,9 +51,10 @@ basePath = os.path.abspath("<installation_directory>/OVERWATCH/")
 Copy /config/serverParams_stub.py to /config/serverParams.py
 The defaultUsername variable should remain empty.
 
-Generating the documentation:
+Generating the documentation (enter AliPhysics first):
 cd <installation_directory>/OVERWATCH/doc
 make html
+
 Running OVERWATCH:
 Download testing data from here: https://aliceoverwatch.physics.yale.edu/contact
 Unzip the file and copy the Run<run_number> folders to
